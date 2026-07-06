@@ -31,7 +31,7 @@ export default function TrackingPickup() {
       <div className="tracking-pickup">
         <div className="tracking-box">          <div className="summary-cards">
             {summaryData.map(data => (
-              <div key={data.id} className="summary-card">
+              <div key={data.id} className={`summary-card ${data.color}`}>
                 <div className={`card-icon ${data.color}`}>
                   {data.icon}
                 </div>

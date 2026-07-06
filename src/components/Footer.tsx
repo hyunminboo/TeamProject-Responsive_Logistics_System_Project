@@ -36,7 +36,8 @@ const footCols: FootCol[] = [
 const csLinks = [
   { label: '공지사항', path: '/support/notice' }, 
   { label: '자주묻는질문', path: '/support/faq' }, 
-  { label: '파손/분실접수', path: '/support/claim' }
+  { label: '파손/분실접수', path: '/support/claim' },
+  { label: '1:1 문의', path: '/support/inquiry' }
 ]
 
 export default function Footer() {

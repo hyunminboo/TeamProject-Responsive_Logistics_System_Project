@@ -1,0 +1,120 @@
+.support-notice-detail {
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+
+  .error-msg {
+    text-align: center;
+    padding: 60px 0;
+    color: #64748b;
+    font-size: 16px;
+  }
+
+  .detail-header {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+
+    .type-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #1e3a8a;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .meta-info {
+      display: flex;
+      gap: 16px;
+      color: #64748b;
+      font-size: 14px;
+
+      span {
+        display: flex;
+        align-items: center;
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 1px;
+          height: 12px;
+          background: #cbd5e1;
+          margin-left: 16px;
+        }
+        &:last-child::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .detail-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #334155;
+    white-space: pre-wrap; /* \n 기호를 실제 줄바꿈으로 렌더링 */
+    min-height: 300px;
+    margin-bottom: 40px;
+  }
+
+  .detail-footer {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 32px;
+
+    .btn-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #1e3a8a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #172554;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .support-notice-detail {
+    padding: 24px;
+
+    .detail-header {
+      h2 {
+        font-size: 20px;
+      }
+      .meta-info {
+        flex-direction: column;
+        gap: 8px;
+        span::after {
+          display: none;
+        }
+      }
+    }
+
+    .detail-content {
+      font-size: 15px;
+      min-height: 200px;
+    }
+  }
+}

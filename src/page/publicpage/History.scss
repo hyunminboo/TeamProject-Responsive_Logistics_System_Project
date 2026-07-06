@@ -2,7 +2,7 @@
   .history-section {
     background-color: #ffffff;
     border-radius: 16px;
-    padding: 50px 60px;
+    padding: 11px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
     margin-bottom: 40px;
 
@@ -210,9 +210,9 @@
 @media (max-width: 992px) {
   .history-wrap {
     .history-section {
-      padding: 30px 20px;
+      padding: 11px;
 
-      .stats-section .section-header {
+      &.stats-section .section-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;

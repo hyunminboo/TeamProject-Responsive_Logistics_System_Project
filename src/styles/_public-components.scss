@@ -7,9 +7,13 @@
   }
 
   .container {
-    max-width: 1180px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 24px;
+
+    @include mobile {
+      padding: 0 11px;
+    }
   }
 
   .grid-2 {

@@ -1,7 +1,7 @@
 .about-infra-wrap {
   background-color: #ffffff;
   border-radius: 16px;
-  padding: 50px 60px;
+  padding: 11px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
 
   .ai-header {
@@ -249,7 +249,7 @@
 // Responsive adjustments
 @media (max-width: 992px) {
   .about-infra-wrap {
-    padding: 30px 20px;
+    padding: 11px;
 
     .infra-row {
       flex-direction: column !important;

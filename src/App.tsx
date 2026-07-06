@@ -1,7 +1,12 @@
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
-import "./App.css"; // 필요하다면 유지
+import { AuthProvider } from "./contexts/AuthContext";
+import "./App.css";
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }

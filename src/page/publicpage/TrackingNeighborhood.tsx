@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SubPageLayout from '../../components/SubPageLayout';
 import { sidebarData } from '../../data/sidebarData';
 

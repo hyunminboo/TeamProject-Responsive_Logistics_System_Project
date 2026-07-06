@@ -14,14 +14,28 @@
       .summary-card {
         flex: 1;
         background: #fff;
-        border-radius: 16px;
+        border-radius: 12px;
+        border: 1px solid #f1f5f9;
         padding: 28px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         display: flex;
         align-items: center;
         justify-content: flex-start;
         gap: 20px;
         position: relative;
+        transition: all 0.2s ease;
+
+        &.yellow {
+          background: #fffbeb;
+          border-color: #fde68a;
+        }
+        &.blue {
+          background: #eff6ff;
+          border-color: #bfdbfe;
+        }
+        &.green {
+          background: #f0fdf4;
+          border-color: #bbf7d0;
+        }
 
         .card-icon {
           width: 44px;
@@ -30,17 +44,16 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          background: #fff;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
           
           &.yellow {
-            background: #fffbeb;
             color: #f59e0b;
           }
           &.blue {
-            background: #eff6ff;
             color: #3b82f6;
           }
           &.green {
-            background: #f0fdf4;
             color: #22c55e;
           }
         }
@@ -278,6 +291,269 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+/* ===== 태블릿 (768px 이하) - 레이아웃 유지, 크기만 축소 ===== */
+@media (max-width: 768px) {
+  .tracking-pickup {
+    .tracking-box {
+      .summary-cards {
+        gap: 12px;
+        margin-bottom: 24px;
+        padding: 0 16px;
+        
+        .summary-card {
+          padding: 16px;
+          gap: 12px;
+
+          .card-icon {
+            width: 36px;
+            height: 36px;
+          }
+
+          .card-info {
+            .card-label { font-size: 11px; }
+            .card-count {
+              font-size: 20px;
+              span { font-size: 13px; margin-left: 2px; }
+            }
+          }
+          
+          .card-percent {
+            top: 10px;
+            right: 10px;
+            padding: 2px 6px;
+            font-size: 10px;
+          }
+        }
+      }
+
+      .pickup-list-container {
+        padding: 16px;
+
+        .list-header {
+          margin-bottom: 20px;
+          .list-title {
+            font-size: 16px;
+            .live-badge { font-size: 11px; padding: 2px 6px; }
+          }
+          .refresh-btn {
+            padding: 6px 10px;
+            font-size: 12px;
+          }
+        }
+
+        .pickup-list {
+          .list-columns {
+            font-size: 11px;
+            padding-bottom: 12px;
+            grid-template-columns: 2fr 2fr 1fr 1.5fr 1.2fr;
+            gap: 10px;
+          }
+
+          .pickup-item {
+            padding: 16px 0;
+            grid-template-columns: 2fr 2fr 1fr 1.5fr 1.2fr;
+            gap: 10px;
+
+            .col-area {
+              .area-name { font-size: 12px; margin-bottom: 4px; }
+              .area-sub { font-size: 10px; }
+            }
+
+            .col-progress {
+              gap: 8px;
+              padding-right: 0;
+              .progress-text { font-size: 12px; min-width: 32px; }
+            }
+
+            .col-count { font-size: 13px; }
+
+            .col-driver {
+              gap: 6px;
+              .driver-initial {
+                width: 24px; height: 24px; font-size: 11px;
+              }
+              .driver-name { font-size: 12px; }
+            }
+
+            .col-status {
+              .status-badge {
+                padding: 4px 8px;
+                font-size: 11px;
+                gap: 4px;
+                &::before { width: 4px; height: 4px; }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ===== 모바일 (500px 이하) - 카드 형태로 세로 스택 ===== */
+@media (max-width: 500px) {
+  .tracking-pickup {
+    .tracking-box {
+      .summary-cards {
+        flex-direction: column;
+        
+        .summary-card {
+          padding: 20px;
+          .card-info .card-count { font-size: 24px; }
+          .card-percent { top: 20px; right: 20px; }
+        }
+      }
+
+      .pickup-list-container {
+        .list-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .pickup-list {
+          .list-columns { display: none; }
+          
+          .pickup-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-areas:
+              "area status"
+              "progress progress"
+              "info info";
+            padding: 20px;
+            border: 1px solid #f1f5f9;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            gap: 16px;
+            background: #fff;
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .col-area {
+              grid-area: area;
+              padding-bottom: 0;
+              border-bottom: none;
+              .area-name { font-size: 15px; margin-bottom: 4px; color: #1e293b; }
+              .area-sub { font-size: 12px; color: #94a3b8; }
+            }
+
+            .col-status {
+              grid-area: status;
+              align-items: flex-start;
+              justify-content: flex-end;
+              .status-badge {
+                padding: 4px 12px;
+                font-size: 12px;
+              }
+            }
+
+            .col-progress {
+              grid-area: progress;
+              display: flex;
+              flex-direction: column;
+              align-items: stretch;
+              gap: 8px;
+              padding: 0;
+
+              .progress-bar { width: 100%; height: 6px; }
+              .progress-text {
+                display: flex;
+                width: 100%;
+                font-size: 13px;
+                font-weight: 600;
+                
+                &.green {
+                  justify-content: space-between;
+                  &::before { content: '수거 완료'; color: #64748b; font-weight: 500; }
+                }
+                &.blue {
+                  justify-content: flex-start;
+                  color: #64748b;
+                  &::after { content: ' 완료'; }
+                }
+                &.yellow {
+                  justify-content: flex-start;
+                  color: #64748b;
+                  &::after { content: ' — 아직 미시작'; }
+                }
+              }
+            }
+
+            .col-driver {
+              grid-area: info;
+              display: flex;
+              align-items: center;
+              justify-self: start;
+              gap: 8px;
+              
+              .driver-initial {
+                width: 28px; height: 28px; font-size: 12px;
+              }
+              .driver-name {
+                font-size: 13px; color: #475569;
+                &::after { content: ' SM'; }
+              }
+            }
+
+            .col-count {
+              grid-area: info;
+              display: flex;
+              align-items: center;
+              justify-self: end;
+              font-size: 14px;
+              color: #1e293b;
+              font-weight: 700;
+              
+              &::before {
+                content: '📦';
+                margin-right: 6px;
+                font-size: 14px;
+                filter: grayscale(1);
+                opacity: 0.5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ===== 소형 모바일 (390px 이하) - 폰트/여백 추가 축소 ===== */
+@media (max-width: 390px) {
+  .tracking-pickup {
+    .tracking-box {
+      .summary-cards {
+        gap: 8px;
+        .summary-card {
+          padding: 16px;
+          .card-icon { width: 32px; height: 32px; }
+          .card-info .card-count { font-size: 20px; }
+          .card-percent { top: 16px; right: 16px; }
+        }
+      }
+
+      .pickup-list-container {
+        padding: 12px;
+        
+        .list-header .list-title { font-size: 14px; }
+        
+        .pickup-list .pickup-item {
+          padding: 14px;
+          gap: 12px;
+          .col-area .area-name { font-size: 14px; }
+          .col-progress .progress-text { font-size: 12px; }
+          .col-driver .driver-name { font-size: 12px; }
+          .col-count { font-size: 13px; }
         }
       }
     }

@@ -5,7 +5,7 @@
 }
 /* 이미지를 화면 왼쪽 가장자리에 절대 좌표로 고정 */
 .partner-bg-img{
-  position:absolute;left:0;top:0;bottom:0;width:42%;display:flex;
+  position:absolute;left:0;top:50%;transform:translateY(-50%);height:380px;width:42%;display:flex;
 }
 .partner-img-el{
   width:100%;height:100%;
@@ -23,7 +23,8 @@
   position:absolute;
   right:-60px;         /* 중앙을 섹션 안쪽에 두어 호 전체가 보이게 */
   top:50%;transform:translateY(-50%);
-  width:380px;height:380px;border-radius:50%;
+  width:380px;height:380px;
+  border-radius:50% 0 0 50%;
   border:40px solid var(--orange);
   border-right-color:transparent;   /* ← 오른쪽 호 제거 → 역D자(⊃) */
   opacity:.95;pointer-events:none;
@@ -32,8 +33,11 @@
 
 @media (max-width: 900px) {
   .partner-ring { display: none; }
-  .partner { flex-direction: column; min-height: auto; }
-  .partner-img-col { flex: none; width: 100%; height: 220px; }
-  .partner-img-el { border-radius: 0 110px 110px 0; }
-  .partner-text-col { padding: 32px 24px; }
+  .partner { flex-direction: column; min-height: auto; padding: 40px 0; }
+  .partner .grid-2 { display: flex; flex-direction: column; }
+  .partner-spacer { display: none; }
+  .partner-bg-img { position: relative; width: 100%; max-width: 100%; height: 260px; margin-bottom: 32px; display: block; top: auto; transform: none; }
+  .partner-img-el { border-radius: 0 110px 110px 0; width: 92%; }
+  .partner-text-col { width: 100%; padding: 0 24px; text-align: center; }
+  .partner-text { max-width: 100%; margin: 0 auto; }
 }

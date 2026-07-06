@@ -21,3 +21,7 @@
 @media (max-width: 900px) {
   .help-cards { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 768px) {
+  .help-card { padding: 11px; }
+}

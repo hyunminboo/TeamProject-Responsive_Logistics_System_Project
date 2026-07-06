@@ -113,29 +113,54 @@ export default function TrackingWaybill() {
             <h3 className="section-title">배송 상세 이력</h3>
             <div className="timeline-vertical">
               <div className="history-item">
-                <div className="time">12/09 14:20</div>
-                <div className="event">배송 출발</div>
-                <div className="desc">담당 기사: 박OO (진접A 구역)</div>
+                <div className="dot"></div>
+                <div className="item-body">
+                  <div className="item-header">
+                    <span className="time">12/09 14:20</span>
+                    <span className="event">배송 출발</span>
+                  </div>
+                  <div className="desc">담당 기사: 박OO (진접A 구역)</div>
+                </div>
               </div>
               <div className="history-item">
-                <div className="time">12/09 13:45</div>
-                <div className="event">분류 완료</div>
-                <div className="desc">남양주 허브 터미널 - 진접읍 배송 구역 배정 완료</div>
+                <div className="dot"></div>
+                <div className="item-body">
+                  <div className="item-header">
+                    <span className="time">12/09 13:45</span>
+                    <span className="event">분류 완료</span>
+                  </div>
+                  <div className="desc">남양주 허브 터미널 - 진접읍 배송 구역 배정 완료</div>
+                </div>
               </div>
               <div className="history-item">
-                <div className="time">12/09 11:30</div>
-                <div className="event">허브 입고</div>
-                <div className="desc">경기 남양주시 진접읍 NexusHub 터미널 입고</div>
+                <div className="dot"></div>
+                <div className="item-body">
+                  <div className="item-header">
+                    <span className="time">12/09 11:30</span>
+                    <span className="event">허브 입고</span>
+                  </div>
+                  <div className="desc">경기 남양주시 진접읍 NexusHub 터미널 입고</div>
+                </div>
               </div>
               <div className="history-item">
-                <div className="time">12/09 09:52</div>
-                <div className="event">간선 이동 중</div>
-                <div className="desc">서울 강남 집하장 → 남양주 허브 터미널 이동</div>
+                <div className="dot"></div>
+                <div className="item-body">
+                  <div className="item-header">
+                    <span className="time">12/09 09:52</span>
+                    <span className="event">간선 이동 중</span>
+                  </div>
+                  <div className="desc">서울 강남 집하장 → 남양주 허브 터미널 이동</div>
+                </div>
               </div>
               <div className="history-item last">
-                <div className="time">12/09 09:14</div>
-                <div className="event">집화 완료</div>
-                <div className="desc">쿠팡 남양주 풀필먼트센터 접수 - 서울 강남 출고</div>
+                <div className="dot"></div>
+                <div className="item-body">
+                  <div className="item-header">
+                    <span className="time">12/09 09:14</span>
+                    <span className="event">집화 완료</span>
+                  </div>
+                  <div className="desc">쿠팡 남양주 풀필먼트센터 접수 - 서울 강남 출고</div>
+                </div>
               </div>
             </div>
           </section>          <section className="action-banners">

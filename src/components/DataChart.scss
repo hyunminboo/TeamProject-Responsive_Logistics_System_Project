@@ -28,3 +28,20 @@
 .hbar .track{height:7px;border-radius:999px;background:var(--light-2);overflow:hidden;}
 .hbar .fill{height:100%;border-radius:999px;}
 
+@media (max-width: 900px) {
+  .data .grid-2 { flex-direction: column-reverse; gap: 40px; }
+  .data .grid-2 > div:last-child { flex: none; width: 100%; text-align: center; }
+  .data .grid-2 > div:last-child .sec-title,
+  .data .grid-2 > div:last-child .sec-desc { margin-left: auto; margin-right: auto; }
+  .data .grid-2 > div:first-child { flex: none; width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .chart-card { padding: 11px; }
+}
+
+@media (max-width: 480px) {
+  .data .grid-2 > div:last-child { padding: 0 16px; }
+  .bars { height: 90px; }
+  .bar-x span { font-size: 8px; }
+}

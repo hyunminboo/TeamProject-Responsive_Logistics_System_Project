@@ -393,3 +393,163 @@
   0% { transform: scale(1); opacity: 0.8; }
   100% { transform: scale(3.5); opacity: 0; }
 }
+
+/* ===== 태블릿 (768px 이하) - 레이아웃 유지, 크기만 축소 ===== */
+@media (max-width: 768px) {
+  .tracking-neighborhood {
+    width: 100%;
+    
+    .tracking-box {
+      padding: 16px 20px;
+    }
+
+    /* 요약 통계: 1줄 유지, 크기만 줄임 */
+    .summary-stats {
+      .stat-item {
+        .stat-label {
+          font-size: 12px;
+        }
+
+        .stat-value {
+          font-size: 20px;
+          .unit {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+
+    /* 상세 섹션: 좌우 배치 유지, 너비/비율 조정 */
+    .detail-section {
+      .section-title {
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+
+      .detail-content {
+        gap: 20px; /* 간격 축소 */
+
+        .region-list-pane {
+          flex: 0 0 220px; /* 너비 축소 */
+          
+          .search-box input {
+            font-size: 13px;
+            padding: 10px 12px 10px 32px;
+          }
+
+          .region-cards {
+            max-height: 400px;
+            
+            .region-card {
+              padding: 12px;
+              
+              .region-name {
+                font-size: 14px;
+              }
+              .region-status {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+
+        .map-pane {
+          flex: 1;
+          min-height: 400px;
+          overflow: hidden;
+          
+          .diagram-container {
+            transform: scale(0.65); /* 지도 크기 축소 */
+            transform-origin: center center; /* 가운데 정렬로 복구 */
+          }
+          
+          .legend {
+            bottom: 0;
+            right: 0;
+            padding: 8px 12px;
+            
+            .legend-item {
+              font-size: 11px;
+              margin-bottom: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ===== 모바일 (500px 이하) - 세로 배치 전환 ===== */
+@media (max-width: 500px) {
+  .tracking-neighborhood {
+    .summary-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+
+      .stat-item {
+        &::after {
+          display: none; /* 세로/격자 배치 시 가름선 제거 */
+        }
+      }
+    }
+
+    .detail-section {
+      .detail-content {
+        flex-direction: column; /* 세로 스택 */
+        gap: 24px;
+
+        .region-list-pane {
+          flex: none;
+          width: 100%;
+          
+          .region-cards {
+            max-height: 250px; /* 세로 모드일 때 스크롤 영역 축소 */
+          }
+        }
+
+        .map-pane {
+          flex: none;
+          width: 100%;
+          min-height: 350px;
+          
+          .diagram-container {
+            transform: scale(0.65);
+            transform-origin: center center;
+          }
+        }
+      }
+    }
+  }
+}
+/* ===== 소형 모바일 (390px 이하) ===== */
+@media (max-width: 390px) {
+  .tracking-neighborhood {
+    .summary-stats {
+      .stat-item {
+        .stat-value {
+          font-size: 16px;
+          .unit { font-size: 11px; }
+        }
+        .stat-label {
+          font-size: 10px;
+        }
+      }
+    }
+    
+    .detail-section {
+      .detail-content {
+        gap: 16px;
+
+        .map-pane {
+          min-height: 280px;
+          .diagram-container {
+            transform: scale(0.5);
+          }
+        }
+      }
+    }
+  }
+}
+
+

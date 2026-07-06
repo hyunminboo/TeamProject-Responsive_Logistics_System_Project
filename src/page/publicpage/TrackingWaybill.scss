@@ -263,6 +263,7 @@
       padding-bottom: 24px;
       position: relative;
 
+      /* 세로 연결선 */
       &::before {
         content: '';
         position: absolute;
@@ -273,10 +274,9 @@
         background: #e0e0e0;
       }
 
-      &.last::before {
-        display: none;
-      }
+      &.last::before { display: none; }
 
+      /* 점 (::after로 표현, .dot은 데스크탑에서 숨김) */
       &::after {
         content: '';
         position: absolute;
@@ -288,27 +288,40 @@
         background: #d0d0d0;
       }
 
-      &:first-child::after {
-        background: #4a7cf6;
-      }
+      &:first-child::after { background: #4a7cf6; }
 
-      .time {
-        width: 60px;
-        font-size: 13px;
-        color: #666;
-      }
+      /* 데스크탑: .dot 숨기고 item-body를 가로 3열로 */
+      .dot { display: none; }
 
-      .event {
-        width: 80px;
-        font-size: 14px;
-        font-weight: 600;
-        color: #333;
-      }
-
-      .desc {
+      .item-body {
+        display: flex;
+        gap: 30px;
         flex: 1;
-        font-size: 13px;
-        color: #666;
+
+        .item-header {
+          display: contents; /* time, event를 flex 자식으로 풀어줌 */
+
+          .time {
+            width: 60px;
+            font-size: 13px;
+            color: #666;
+            flex-shrink: 0;
+          }
+
+          .event {
+            width: 80px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            flex-shrink: 0;
+          }
+        }
+
+        .desc {
+          flex: 1;
+          font-size: 13px;
+          color: #666;
+        }
       }
     }
   }
@@ -317,6 +330,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     margin-top: 10px;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr; /* 900px 이하에서 1열로 변경 */
+    }
 
     .banner-card {
       border: 1px solid #f0f0f0;
@@ -354,6 +371,9 @@
         cursor: pointer;
         border: none;
         color: white;
+        white-space: nowrap;
+        flex-shrink: 0;
+        min-width: 52px;
 
         &.btn-blue {
           background: #4a7cf6;
@@ -362,6 +382,277 @@
         &.btn-red {
           background: #f75555;
         }
+      }
+    }
+  }
+}
+
+/* ===== 모바일 (600px 이하) ===== */
+@media (max-width: 600px) {
+  .general-tracking {
+    .tracking-box {
+      padding: 20px 16px;
+    }
+
+
+
+    /* 검색 버튼 세로 배치 */
+    .search-section {
+      .search-box {
+        flex-direction: column;
+
+        input { width: 100%; }
+
+        .btn-search {
+          width: 100%;
+          padding: 14px;
+          font-size: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+
+          svg { display: none; } /* 모바일에서 아이콘 숨김 */
+        }
+      }
+
+      .recent-search {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+    }
+
+    /* 상태 요약 - 세로 정렬 */
+    .status-summary {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+
+      .status-title h2 {
+        font-size: 16px;
+        word-break: break-all;
+      }
+    }
+
+    /* 카드 1열 */
+    .info-cards {
+      grid-template-columns: 1fr;
+      gap: 12px;
+
+      .card-desc {
+        .badge-gray {
+          display: inline-block;
+          background: #f1f5f9;
+          color: #64748b;
+          padding: 2px 8px;
+          border-radius: 6px;
+          font-size: 12px;
+          font-weight: 600;
+          margin-left: 6px;
+        }
+      }
+    }
+
+    /* 타임라인 세로 변환 */
+    .timeline-horizontal {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 0;
+      padding-left: 12px;
+      gap: 20px;
+      margin-top: 12px;
+
+      &::before {
+        width: 2px;
+        height: auto;
+        top: 12px;
+        bottom: 12px;
+        left: 23px;
+        right: auto;
+        min-width: 0;
+      }
+
+      .step {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 14px;
+        row-gap: 2px;
+        text-align: left;
+        align-items: start;
+        min-width: 0;
+
+        .circle {
+          grid-column: 1;
+          grid-row: 1 / 3;
+          margin-bottom: 0;
+        }
+
+        .step-name {
+          grid-column: 2;
+          grid-row: 1;
+          margin-bottom: 0;
+        }
+
+        .step-time {
+          grid-column: 2;
+          grid-row: 2;
+          display: flex;
+          flex-direction: row;
+          gap: 6px;
+          flex-wrap: wrap;
+
+          br { display: none; }
+        }
+      }
+    }
+
+    /* 하단 배너 1열 */
+    .action-banners {
+      grid-template-columns: 1fr;
+    }
+
+    /* 배송 상세 이력: 모바일에서 도트 스타일로 변경 */
+    .timeline-vertical {
+      padding-left: 0;
+
+      .history-item {
+        gap: 14px;
+        padding: 14px 8px;
+        padding-bottom: 14px;
+
+        /* 기존 ::before 연결선, ::after 점 숨김 */
+        &::before { display: none; }
+        &::after { display: none; }
+
+        /* .dot 표시 */
+        .dot {
+          display: block;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #d0d0d0;
+          flex-shrink: 0;
+          margin-top: 5px;
+        }
+
+        &:first-child .dot { background: #4a7cf6; }
+        &:nth-child(2) .dot { background: #1cc661; }
+        &:nth-child(3) .dot { background: #1cc661; }
+        &:nth-child(4) .dot { background: #1cc661; }
+        &.last .dot { background: #1cc661; }
+
+        /* item-body를 세로 배치 */
+        .item-body {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          flex: 1;
+
+          .item-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .time {
+              width: auto;
+              font-size: 13px;
+              color: #888;
+              font-weight: 400;
+            }
+
+            .event {
+              width: auto;
+              font-size: 14px;
+              font-weight: 700;
+              color: #222;
+            }
+          }
+
+          .desc {
+            flex: unset;
+            font-size: 13px;
+            color: #777;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ===== 소형 모바일 (390px 이하) 폰트 축소 ===== */
+@media (max-width: 390px) {
+  .general-tracking {
+    font-size: 12px;
+
+    .section-title { font-size: 12px; }
+
+    .status-summary {
+      .status-title h2 { font-size: 14px; }
+      .expected-time   { font-size: 11px; }
+    }
+
+    .info-cards .card {
+      padding: 16px;
+      .card-label { font-size: 10px; }
+      .card-value { font-size: 13px; }
+      .card-desc  { font-size: 11px; }
+    }
+
+    .timeline-horizontal .step {
+      .step-name { font-size: 11px; }
+      .step-time { font-size: 10px; }
+    }
+
+    .timeline-vertical .history-item {
+      .item-header {
+        .time  { font-size: 10px; }
+        .event { font-size: 11px; }
+      }
+      .desc { font-size: 10px; }
+    }
+
+    .action-banners .banner-card {
+      padding: 14px 16px;
+      gap: 12px;
+
+      strong {
+        font-size: 12px;
+        white-space: nowrap;  /* 제목 줄바꿈 방지 */
+      }
+      p      { font-size: 10px; }
+      button { font-size: 11px; padding: 6px 12px; }
+
+      .banner-info {
+        gap: 10px;
+        min-width: 0;
+        overflow: hidden;
+
+        > div {
+          min-width: 0;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .search-section {
+      h3.section-title { font-size: 12px; }
+
+      input {
+        font-size: 13px;
+        padding: 12px 14px;
+      }
+
+      .btn-search {
+        font-size: 13px;
+        padding: 12px;
+      }
+
+      .recent-search {
+        font-size: 11px;
+        .tag { font-size: 11px; padding: 3px 10px; }
       }
     }
   }

@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 
 type SubHeroProps = {
   title: string;
+  desc?: string;
   breadcrumbs: { label: string, path?: string }[];
 };
 
-export default function SubHero({ title, breadcrumbs }: SubHeroProps) {
+export default function SubHero({ title, desc, breadcrumbs }: SubHeroProps) {
   return (
     <div className="sub-hero">
       <div className="container">
@@ -19,6 +20,7 @@ export default function SubHero({ title, breadcrumbs }: SubHeroProps) {
             ))}
           </div>
           <h1 className="title">{title}</h1>
+          {desc && <p className="sub-hero-desc">{desc}</p>}
         </div>
       </div>
     </div>

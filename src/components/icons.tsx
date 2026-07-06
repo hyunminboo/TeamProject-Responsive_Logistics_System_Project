@@ -12,6 +12,7 @@ const base = (size: number, props?: IconProps) => ({
   fill: 'none' as const,
   stroke: 'currentColor',
   strokeWidth: 2,
+  overflow: 'visible' as const,
   style: props?.style,
   className: props?.className
 })
@@ -106,7 +107,7 @@ export const IconSpeaker = ({ size = 20 }: IconProps) => (
 
 export const IconQuestion = ({ size = 20 }: IconProps) => (
   <svg {...base(size)}>
-    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="9" />
     <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
     <line x1="12" y1="17" x2="12.01" y2="17" />
   </svg>
@@ -138,7 +139,7 @@ export const IconMap = ({ size = 20 }: IconProps) => (
 
 export const IconClock = ({ size = 20 }: IconProps) => (
   <svg {...base(size)}>
-    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="9" />
     <polyline points="12 6 12 12 16 14" />
   </svg>
 )
@@ -152,7 +153,7 @@ export const IconHome = ({ size = 20 }: IconProps) => (
 
 export const IconInfoCircle = ({ size = 20 }: IconProps) => (
   <svg {...base(size)}>
-    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="9" />
     <line x1="12" y1="16" x2="12" y2="12" />
     <line x1="12" y1="8" x2="12.01" y2="8" />
   </svg>
@@ -162,5 +163,28 @@ export const IconPen = ({ size = 20 }: IconProps) => (
   <svg {...base(size)}>
     <path d="M12 20h9" />
     <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+  </svg>
+)
+
+export const IconConsultChat = ({ size = 20 }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 27 27" fill="none" stroke="currentColor" strokeWidth="2.09" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M8.49447 22.5197C10.9043 23.7558 13.6764 24.0907 16.3113 23.4638C18.9462 22.837 21.2705 21.2896 22.8655 19.1007C24.4604 16.9117 25.2211 14.225 25.0105 11.5248C24.7998 8.82462 23.6317 6.28843 21.7165 4.37329C19.8014 2.45816 17.2652 1.29001 14.565 1.07936C11.8648 0.868709 9.17815 1.6294 6.98918 3.22436C4.80021 4.81933 3.25288 7.14367 2.62602 9.77854C1.99916 12.4134 2.334 15.1855 3.57019 17.5954L1.04492 25.0449L8.49447 22.5197Z" />
+  </svg>
+)
+
+export const IconHelpCircle = ({ size = 20 }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+    <circle cx="12" cy="17" r="0.5" fill="currentColor" />
+  </svg>
+)
+
+export const IconFilePlus = ({ size = 20 }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 25 25" fill="none" stroke="currentColor" strokeWidth="1.66782" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15.6251 2.08301H6.24949C5.69692 2.08301 5.16698 2.30252 4.77625 2.69324C4.38552 3.08397 4.16602 3.61391 4.16602 4.16649V20.8343C4.16602 21.3869 4.38552 21.9168 4.77625 22.3076C5.16698 22.6983 5.69692 22.9178 6.24949 22.9178H18.7504C19.3029 22.9178 19.8329 22.6983 20.2236 22.3076C20.6143 21.9168 20.8338 21.3869 20.8338 20.8343V7.2917L15.6251 2.08301Z" />
+    <path d="M14.5859 2.08301V6.24996C14.5859 6.80254 14.8054 7.33248 15.1962 7.72321C15.5869 8.11393 16.1168 8.33344 16.6694 8.33344H20.8364" />
+    <path d="M9.375 15.6255H15.6254" />
+    <path d="M12.5 18.7504V12.5" />
   </svg>
 )

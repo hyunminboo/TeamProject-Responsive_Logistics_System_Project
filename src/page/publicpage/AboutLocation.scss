@@ -1,7 +1,7 @@
 .location-wrap {
   background-color: #ffffff;
   border-radius: 16px;
-  padding: 50px 60px;
+  padding: 11px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
 
   .location-header {
@@ -44,19 +44,20 @@
 
   .info-cards-grid {
     display: flex;
-    gap: 24px;
+    gap: 16px;
 
     .info-card {
       flex: 1;
       background-color: #f8fafc;
       border-radius: 12px;
-      padding: 30px;
+      padding: 14px 10px;
+      min-width: 0;
 
       .card-title {
-        font-size: 18px;
+        font-size: 13px;
         font-weight: 700;
         color: #1e293b;
-        margin-bottom: 24px;
+        margin-bottom: 12px;
       }
 
       .info-list {
@@ -65,23 +66,23 @@
         margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 8px;
 
         .info-item {
           display: flex;
           align-items: flex-start;
-          gap: 12px;
+          gap: 6px;
 
           .info-badge {
             flex-shrink: 0;
-            padding: 4px 10px;
+            padding: 3px 6px;
             border-radius: 4px;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 600;
             color: #ffffff;
             white-space: nowrap;
             line-height: 1.2;
-            margin-top: 2px;
+            margin-top: 1px;
 
             &.badge-blue { background-color: #3b82f6; }
             &.badge-dark { background-color: #1e293b; }
@@ -91,9 +92,11 @@
 
           .info-text {
             color: #475569;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 12px;
+            line-height: 1.4;
+            letter-spacing: -0.3px;
             word-break: keep-all;
+            overflow-wrap: break-word;
           }
         }
       }
@@ -104,7 +107,7 @@
 // Responsive adjustments
 @media (max-width: 992px) {
   .location-wrap {
-    padding: 30px 20px;
+    padding: 11px;
 
     .map-placeholder {
       height: 300px;

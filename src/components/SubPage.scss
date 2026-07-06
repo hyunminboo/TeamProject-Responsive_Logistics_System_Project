@@ -20,6 +20,7 @@
 
   .sub-hero-content {
     text-align: left;
+    padding: 0 11px; /* 양옆 화면 끝에 딱 붙지 않도록 간격 추가 */
   }
 
   .breadcrumbs {
@@ -40,18 +41,30 @@
   .title {
     font-size: 40px;
     font-weight: 800;
+
+    @media (max-width: 420px) {
+      font-size: 28px; /* 420px 이하에서 히어로 제목 크기 축소 */
+    }
   }
 }
 
 .subpage-container {
   display: flex;
   gap: 40px;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 11px; /* 화면 끝에 딱 붙지 않게 11px 간격 */
+  padding-right: 11px;
   align-items: flex-start;
 
   @include mobile {
     flex-direction: column;
+    align-items: stretch;
+    padding-top: 0;
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-bottom: 0;
+    gap: 20px;
   }
 }
 
@@ -63,13 +76,9 @@
   border-radius: 24px;
   box-shadow: 0 12px 32px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.02);
   padding: 32px 24px;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: 0;
+  margin-bottom: 0;
   overflow: hidden;
-
-  @include mobile {
-    width: 100%;
-  }
 
   &-header {
     margin-bottom: 16px;
@@ -80,6 +89,10 @@
       font-weight: 700;
       color: var(--muted);
     }
+  }
+
+  .mobile-dropdown-toggle {
+    display: none;
   }
 
   &-menu {
@@ -122,12 +135,185 @@
       opacity: 0.9;
     }
   }
+
+  /* 900px 이하: 테블릿 및 모바일에서 사이드바 드롭다운 형태로 변경 */
+  @include mobile {
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 24px 0 0; /* 컨테이너 자체 여백이 있으므로 좌우 여백은 0으로 수정 */
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: none;
+    overflow: visible;
+
+    &-header {
+      display: none;
+    }
+
+    .mobile-dropdown-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 11px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      cursor: pointer;
+      margin-bottom: 8px;
+
+      .arrow {
+        transition: transform 0.3s ease;
+        &.open {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &-menu {
+      display: none; /* 기본으로 숨김 처리 */
+      flex-direction: column;
+      align-items: stretch;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px; /* 박스 형태 모서리 둥글게 */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 드롭 섀도우(그림자) 추가 */
+      overflow: hidden; /* 모서리 둥글게 깎기 위해 */
+
+      &.open {
+        display: flex; /* 토글 시 나타남 */
+      }
+    }
+
+    &-link {
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #f1f5f9;
+      white-space: normal;
+      padding: 11px; /* 11px로 통일 */
+
+      .icon {
+        display: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.active::after {
+        display: none;
+      }
+      
+      &.active {
+        background: #eff6ff;
+        font-weight: 700;
+      }
+    }
+  }
 }
 
 /* 본문 영역 */
 .subpage-content {
   flex: 1;
   min-width: 0;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  @media (max-width: 900px) {
+    padding-top: 0;
+    padding-bottom: 60px;
+  }
+}
+
+.sub-hero-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.80);
+  margin-top: 10px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+/* 사이드바 컬럼 (사이드바 + 추가 박스) */
+.sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 280px;
+  flex-shrink: 0;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+}
+
+.sidebar-col > .sidebar {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @media (max-width: 900px) {
+    margin-top: 0;
+  }
+}
+
+/* 상담 진행 절차 박스 */
+.sidebar-extra {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.02);
+  padding: 28px 24px;
+  
+  @media (max-width: 900px) {
+    padding: 11px;
+  }
+}
+
+.consult-steps {
+  &__title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  &__num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  &__text {
+    h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+  }
 }

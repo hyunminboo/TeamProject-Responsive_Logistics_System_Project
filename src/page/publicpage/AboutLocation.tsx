@@ -1,8 +1,25 @@
 import SubPageLayout from '../../components/SubPageLayout';
 import { sidebarData } from '../../data/sidebarData';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import './AboutLocation.scss';
 
+// Fix for default marker icon in Vite/Webpack
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
+});
+
 export default function AboutLocation() {
+  // 경기도 남양주시 진접읍 임의의 좌표 설정 (테스트용)
+  const position: [number, number] = [37.7252, 127.1704];
+
   return (
     <SubPageLayout 
       heroTitle="오시는 길"
@@ -20,8 +37,19 @@ export default function AboutLocation() {
           <p>방문객용 지도 및 실무적인 터미널 배치도 안내입니다. 11톤 간선 차량과 1톤 택배차의 진입로가 분리 운영됩니다.</p>
         </div>
 
-        <div className="map-placeholder">
-          {/* 지도 영역 비워두기 */}
+        <div className="map-placeholder" style={{ overflow: 'hidden', zIndex: 0 }}>
+          <MapContainer center={position} zoom={14} scrollWheelZoom={false} style={{ width: '100%', height: '100%', zIndex: 1 }}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={position}>
+              <Popup>
+                <strong>NexusHub 물류센터</strong><br />
+                경기도 남양주시 진접읍 물류로 123
+              </Popup>
+            </Marker>
+          </MapContainer>
         </div>
 
         <div className="info-cards-grid">

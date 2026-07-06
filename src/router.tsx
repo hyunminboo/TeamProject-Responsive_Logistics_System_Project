@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import PublicLayout from "./page/PublicLayout";
-import AdminLayout from "./page/AdminLayout";
 import Home from "./page/publicpage/Home";
 
 import AboutMessage from "./page/publicpage/AboutMessage";
@@ -11,16 +10,22 @@ import History from "./page/publicpage/History";
 import TrackingWaybill from "./page/publicpage/TrackingWaybill";
 import TrackingNeighborhood from "./page/publicpage/TrackingNeighborhood";
 import TrackingPickup from "./page/publicpage/TrackingPickup";
+import Login from "./page/publicpage/Login";
 
 import ConsultingInfo from "./page/publicpage/ConsultingInfo";
 import ConsultingApply from "./page/publicpage/ConsultingApply";
 
 import SupportNotice from "./page/publicpage/SupportNotice";
+import SupportNoticeDetail from "./page/publicpage/SupportNoticeDetail";
 import SupportFaq from "./page/publicpage/SupportFaq";
 import SupportClaim from "./page/publicpage/SupportClaim";
 import SupportInquiry from "./page/publicpage/SupportInquiry";
 
 export const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <Login />,
+  },
   {
     path: "/",
     element: <PublicLayout />,
@@ -40,17 +45,10 @@ export const router = createBrowserRouter([
       { path: "consulting/apply", element: <ConsultingApply /> },
 
       { path: "support/notice", element: <SupportNotice /> },
+      { path: "support/notice/:id", element: <SupportNoticeDetail /> },
       { path: "support/faq", element: <SupportFaq /> },
       { path: "support/claim", element: <SupportClaim /> },
       { path: "support/inquiry", element: <SupportInquiry /> },
     ],
   },
-  {
-    path: "/admin",
-    element: <AdminLayout />,
-    children: [
-      // 어드민 하위 페이지들이 여기에 추가됩니다.
-    ],
-  },
 ]);
-

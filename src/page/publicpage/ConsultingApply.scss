@@ -1,0 +1,184 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.consulting-apply {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  /* 좁은 화면에서 부모(.subpage-container)의 11px 패딩이 너무 좁아
+     텍스트/폼이 화면 끝에 붙는 느낌을 주므로, 이 페이지에서만 여백 보강 */
+  @media (max-width: 768px) {
+    padding: 0 6px;
+  }
+  @media (max-width: 500px) {
+    padding: 0 10px;
+  }
+}
+
+/* 헤더 */
+.ca-header {
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  &__desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+}
+
+/* 레이블 */
+.ca-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  .required {
+    color: var(--blue);
+  }
+}
+
+/* 상담 분야 토글 */
+.ca-type-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ca-type-btn {
+  padding: 8px 18px;
+  border-radius: 24px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  &.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+/* 그리드 */
+.ca-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.ca-field {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 인풋 공통 */
+.ca-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--text);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+  appearance: auto;
+
+  &::placeholder {
+    color: var(--muted-2);
+  }
+
+  &:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+  }
+}
+
+/* 텍스트에어리어 */
+.ca-textarea {
+  @extend .ca-input;
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+/* 동의 체크박스 */
+.ca-agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    margin-top: 2px;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: var(--blue);
+  }
+}
+
+/* 제출 버튼 */
+.ca-submit {
+  width: 100%;
+  padding: 18px;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.02em;
+
+  &:hover {
+    background: var(--blue-dark);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* ===== 소형 모바일 (500px 이하) - 폰트/여백 축소 ===== */
+@media (max-width: 500px) {
+  .ca-header__title {
+    font-size: 19px;
+  }
+
+  .ca-type-btn {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+
+  .ca-submit {
+    padding: 16px;
+    font-size: 15px;
+  }
+}

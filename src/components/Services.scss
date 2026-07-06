@@ -27,5 +27,19 @@
 
 
 @media (max-width: 900px) {
+  .services .grid-2 { flex-direction: column; gap: 40px; }
+  .services .grid-2 > div:first-child { flex: none; width: 100%; text-align: center; }
+  .services .grid-2 > div:first-child .sec-title,
+  .services .grid-2 > div:first-child .sec-desc { margin-left: auto; margin-right: auto; }
+  .services .service-panel { flex: none; width: 100%; }
   .service-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .service-panel { padding: 11px; }
+  .svc-card { padding: 11px; }
+}
+
+@media (max-width: 450px) {
+  .services .grid-2 > div:first-child { padding: 0 16px; }
 }
